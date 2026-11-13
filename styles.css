@@ -1,0 +1,589 @@
+/* ==================== TOP CHAT BANNER (#saarthii-caller-banner) ==================== */
+#saarthii-caller-banner {
+  height: 36px;
+  min-height: 36px;
+  max-height: 36px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  border-bottom: 1px solid rgba(134, 150, 160, 0.15);
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 100;
+  user-select: text;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.saarthii-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.saarthii-banner-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.saarthii-banner-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.saarthii-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.saarthii-user-name {
+  font-weight: 600;
+}
+
+.saarthii-sep {
+  opacity: 0.55;
+  margin: 0 2px;
+}
+
+.saarthii-agency-name {
+  font-weight: 500;
+  opacity: 0.92;
+}
+
+.saarthii-extra-pill {
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(134, 150, 160, 0.16);
+  font-weight: 500;
+}
+
+.saarthii-phone-subtle {
+  font-size: 11px;
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+}
+
+.saarthii-open-drawer-btn {
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: inherit;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.saarthii-open-drawer-btn:hover {
+  background: rgba(16, 185, 129, 0.3);
+}
+
+.saarthii-refresh-btn {
+  background: transparent;
+  border: 1px solid rgba(134, 150, 160, 0.3);
+  color: inherit;
+  border-radius: 4px;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+  padding: 0;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.saarthii-refresh-btn:hover {
+  background: rgba(134, 150, 160, 0.2);
+}
+
+.saarthii-refresh-btn:active {
+  transform: rotate(90deg);
+}
+
+/* Banner State Variants */
+.saarthii-state-loading {
+  background-color: rgba(134, 150, 160, 0.1);
+  color: var(--primary-strong, #3b4a54);
+}
+.dark .saarthii-state-loading,
+body.dark .saarthii-state-loading {
+  color: #d1d7db;
+}
+.saarthii-state-loading .saarthii-status-dot {
+  background-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25);
+}
+
+.saarthii-state-found {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #065f46;
+}
+.dark .saarthii-state-found,
+body.dark .saarthii-state-found {
+  background-color: rgba(16, 185, 129, 0.16);
+  color: #a7f3d0;
+}
+.saarthii-state-found .saarthii-status-dot {
+  background-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+}
+.saarthii-state-found .saarthii-extra-pill {
+  background-color: rgba(16, 185, 129, 0.18);
+}
+
+.saarthii-state-not_found,
+.saarthii-state-lid_prompt {
+  background-color: rgba(245, 158, 11, 0.12);
+  color: #92400e;
+}
+.dark .saarthii-state-not_found,
+body.dark .saarthii-state-not_found,
+.dark .saarthii-state-lid_prompt,
+body.dark .saarthii-state-lid_prompt {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #fde68a;
+}
+.saarthii-state-not_found .saarthii-status-dot,
+.saarthii-state-lid_prompt .saarthii-status-dot {
+  background-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25);
+}
+
+.saarthii-state-unconfigured,
+.saarthii-state-error {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #991b1b;
+}
+.dark .saarthii-state-unconfigured,
+body.dark .saarthii-state-unconfigured,
+.dark .saarthii-state-error,
+body.dark .saarthii-state-error {
+  background-color: rgba(239, 68, 68, 0.16);
+  color: #fecaca;
+}
+.saarthii-state-unconfigured .saarthii-status-dot,
+.saarthii-state-error .saarthii-status-dot {
+  background-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25);
+}
+
+/* ==================== BUYHATKE-STYLE FLOATING SIDE TAB (#saarthii-floating-fab) ==================== */
+#saarthii-floating-fab {
+  position: fixed;
+  right: 0;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+  padding: 9px 12px 9px 10px;
+  border-radius: 24px 0 0 24px;
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  border-right: none;
+  box-shadow: -4px 4px 16px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+  transition: padding-right 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#saarthii-floating-fab:hover {
+  padding-right: 16px;
+  box-shadow: -6px 6px 20px rgba(16, 185, 129, 0.28);
+}
+
+#saarthii-floating-fab.saarthii-fab-active {
+  background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+  border-color: #10b981;
+}
+
+.saarthii-fab-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #06281e;
+  font-weight: 800;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.saarthii-fab-label {
+  font-size: 12px;
+  font-weight: 600;
+  max-width: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.saarthii-fab-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #94a3b8;
+  flex-shrink: 0;
+}
+
+.saarthii-fab-found .saarthii-fab-dot {
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+.saarthii-fab-not_found .saarthii-fab-dot {
+  background: #f59e0b;
+}
+
+.saarthii-fab-error .saarthii-fab-dot,
+.saarthii-fab-unconfigured .saarthii-fab-dot {
+  background: #ef4444;
+}
+
+/* ==================== FLOATING DETAILS & COMMENT DRAWER (#saarthii-floating-panel) ==================== */
+#saarthii-floating-panel {
+  position: fixed;
+  top: 72px;
+  right: 14px;
+  width: 350px;
+  max-height: calc(100vh - 100px);
+  background: #0f172a;
+  color: #f8fafc;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  z-index: 99998;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#saarthii-floating-panel.saarthii-panel-closed {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(24px);
+}
+
+#saarthii-floating-panel.saarthii-panel-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.saarthii-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+
+.saarthii-panel-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.saarthii-panel-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #34d399;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.saarthii-panel-title-wrap {
+  overflow: hidden;
+}
+
+.saarthii-panel-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f8fafc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.saarthii-panel-subtitle {
+  font-size: 11px;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.saarthii-panel-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.saarthii-icon-btn {
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.saarthii-icon-btn:hover {
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.saarthii-panel-body {
+  padding: 14px 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.saarthii-phone-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.saarthii-card-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+.saarthii-phone-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #34d399;
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.saarthii-chip-btn {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.saarthii-chip-btn:hover {
+  background: rgba(16, 185, 129, 0.28);
+}
+
+.saarthii-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saarthii-section-header {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.saarthii-quick-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.saarthii-tag-chip {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.saarthii-tag-chip:hover {
+  border-color: #10b981;
+  color: #34d399;
+}
+
+.saarthii-comment-textarea {
+  width: 100%;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #f8fafc;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.saarthii-comment-textarea:focus {
+  border-color: #10b981;
+}
+
+.saarthii-comment-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.saarthii-comment-status {
+  font-size: 11px;
+  flex: 1;
+}
+
+.saarthii-status-ok {
+  color: #34d399;
+}
+
+.saarthii-status-err {
+  color: #f87171;
+}
+
+.saarthii-submit-btn {
+  background: #10b981;
+  color: #06281e;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.saarthii-submit-btn:hover:not(:disabled) {
+  background: #059669;
+  color: #ffffff;
+}
+
+.saarthii-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.saarthii-details-grid {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.saarthii-detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 12px;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+.saarthii-detail-row:last-child {
+  border-bottom: none;
+}
+
+.saarthii-detail-key {
+  color: #94a3b8;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.saarthii-detail-val {
+  color: #f8fafc;
+  font-weight: 600;
+  text-align: right;
+  word-break: break-word;
+}
+
+.saarthii-empty-box {
+  background: #1e293b;
+  border: 1px dashed #334155;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.saarthii-comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.saarthii-comment-item {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.saarthii-comment-text {
+  font-size: 12px;
+  color: #f1f5f9;
+  line-height: 1.4;
+}
+
+.saarthii-comment-meta {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 4px;
+}

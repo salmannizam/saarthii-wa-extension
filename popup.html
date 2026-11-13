@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saarthii Caller ID Settings</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 340px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 16px;
+      font-size: 13px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header h1 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge {
+      font-size: 10px;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin: 12px 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-title:first-of-type {
+      margin-top: 0;
+    }
+
+    .field {
+      margin-bottom: 10px;
+    }
+
+    .row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .row .field {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 7px 9px;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--accent);
+    }
+
+    .hint {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 12px 0;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: background-color 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn-primary {
+      flex: 1;
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background-color: var(--card);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      color: var(--text);
+      border-color: var(--muted);
+    }
+
+    #status-msg {
+      margin-top: 8px;
+      font-size: 12px;
+      text-align: center;
+      min-height: 16px;
+      font-weight: 500;
+    }
+
+    .status-success {
+      color: var(--accent);
+    }
+
+    .status-error {
+      color: var(--danger);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Saarthii Caller ID</h1>
+    <span class="badge">v1.1</span>
+  </div>
+
+  <div class="section-title">1. Caller ID Lookup API</div>
+
+  <div class="field">
+    <label for="apiUrl">Lookup API Endpoint URL</label>
+    <input type="url" id="apiUrl" placeholder="https://api.saarthii.com/v1/caller-id" />
+  </div>
+
+  <div class="row">
+    <div class="field" style="flex: 0 0 90px;">
+      <label for="httpMethod">HTTP Method</label>
+      <select id="httpMethod">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="phoneParam">Phone Param Name</label>
+      <input type="text" id="phoneParam" placeholder="phone" value="phone" />
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">2. Add Comment / Note API (Portal)</div>
+
+  <div class="field">
+    <label for="commentApiUrl">Add Comment API Endpoint URL (POST)</label>
+    <input type="url" id="commentApiUrl" placeholder="https://api.saarthii.com/v1/add-comment" />
+    <div class="hint">Used by the floating side panel to post comments directly to Saarthii Portal.</div>
+  </div>
+
+  <div class="field">
+    <label for="commentParam">Comment JSON Key Name</label>
+    <input type="text" id="commentParam" placeholder="comment" value="comment" />
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">3. Authentication</div>
+
+  <div class="field">
+    <label for="apiKey">API Key / Bearer Token</label>
+    <input type="password" id="apiKey" placeholder="Enter API Key or Bearer token" />
+  </div>
+
+  <div class="field">
+    <label for="authHeader">Auth Header Name</label>
+    <input type="text" id="authHeader" placeholder="x-api-key or Authorization" value="x-api-key" />
+  </div>
+
+  <div class="actions">
+    <button id="saveBtn" class="btn-primary">Save Settings</button>
+    <button id="clearCacheBtn" class="btn-secondary" title="Clear cached lookups">Clear Cache</button>
+  </div>
+
+  <div id="status-msg"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
